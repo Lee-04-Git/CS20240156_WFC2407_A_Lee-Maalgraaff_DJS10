@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react';
 import errorImage from './assets/error-message.png';
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState('');
+  const [posts, setPosts] = useState([]); // State variable to store the fetched blog posts
+  const [error, setError] = useState(''); // State variable to store any potential error message
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        // fetch data from the API
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   
         if (!response.ok) {
           throw new Error('Failed to fetch blog posts. Please try again later.');
         }
-  
+        
+        // Parse the response JSON and update the state with the data
         const data = await response.json();
-        setPosts(data);
+        setPosts(data); // Update the posts state with the fetched data
       } catch (err) {
+        // If an error occurs, update the error state with the message
         setError(err.message);
       }
     };
   
+    // Call the function to fetch posts when the component mounts
     fetchPosts();
-  }, []);
+  }, []); // Empty dependency array ensures the effect runs only once
 
   return (
     <div>
