@@ -24,9 +24,28 @@ const App = () => {
     fetchPosts();
   }, []);
 
-  return <div>
-
-  </div>;
+  return (
+    <div>
+      <h1>Blog Posts</h1>
+  
+      {error ? (
+        <div>
+          <img src={errorImage} alt="Error occurred" />
+          <p>{error}</p>
+        </div>
+      ) : (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+  ;
 };
 
 export default App;
