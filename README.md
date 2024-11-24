@@ -33,3 +33,5 @@ Your task is to build a React application that makes HTTP GET requests to the JS
 - Effective state management and error handling.
 - Code readability and structure.
 - Handling of edge cases and potential errors.
+
+netlify link: https://djs10.netlify.app/
